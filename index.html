@@ -8,12 +8,21 @@
     <title>Document</title>
   </head>
   <body>
-    <input type="text" id="pokemon" onkeypress="enter(event)" />
-    <button onclick="fetchData()">Buscar Pokemon</button>
-    <div>
-      <img id="imagen" />
-    </div>
-    <p id="name" class="nombre"></p>
+    <main class="container">
+      <section class="pokedex">
+        <input
+          class="typePokemon"
+          type="text"
+          id="pokemon"
+          onkeypress="enter(event)"
+          placeholder="Buscar Pokemon..."
+        />
+        <div class="containerImage">
+          <img class="image" id="imagen" />
+        </div>
+        <p id="name" class="nombre"></p>
+      </section>
+    </main>
     <script src="scripts.js"></script>
   </body>
 </html>
