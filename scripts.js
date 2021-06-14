@@ -1,16 +1,26 @@
+const pokemonName = document.getElementById("name");
+const pokemonImage = document.getElementById("imagen");
+const input = document.getElementById("pokemon");
+const containerImage = document.getElementById("containerImage");
+
 async function fetchData() {
   try {
-    const inputValue = document.getElementById("pokemon").value.toLowerCase();
+    if (containerImage) {
+      containerImage.innerHTML = "";
+    }
+    const inputValue = input.value.toLowerCase();
     const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${inputValue}`);
     const json = await data.json();
 
-    document.getElementById("name").innerHTML = json.name;
-    document.getElementById("imagen").src = json.sprites.front_default;
-    document.getElementById("pokemon").value = "";
+    pokemonName.innerHTML = json.name;
+
+    const newImage = document.createElement("img");
+    newImage.classList.add("image");
+    newImage.src = json.sprites.front_default;
+    containerImage.appendChild(newImage);
+    input.value = "";
   } catch (error) {
-    console.log("Error");
-    document.getElementById("name").innerHTML = "Pokemon inválido";
-    document.getElementById("imagen").src = " ";
+    pokemonName.innerHTML = "Pokemon inválido";
   }
 }
 
